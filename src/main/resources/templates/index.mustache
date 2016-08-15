@@ -5,22 +5,27 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<form name="" action="/search">
-    <input type="text" name="artist" placeholder="Artist">
-    <input type="text" name="query" placeholder="lyric">
-    <button type="submit">Search</button>
-</form>
-<button onclick="window.location='/add'">Add</button>
-<ul>
-    <!--{{#songs}}-->
-        <!--<li>{{id}} - {{getSource.name}} - {{getSource.year}}-->
-            <!--{{#getHighlightFields}} --->
-                <!--{{#lyrics.getFragments}}-->
-                    <!--{{#.}}{{{.}}}{{/.}}-->
-                <!--{{/lyrics.getFragments}}-->
-            <!--{{/getHighlightFields}}-->
-        <!--</li>-->
-    <!--{{/songs}}-->
-</ul>
+
+<div class="container">
+    <h2>ElasticSearch jQuery API Demo</h2>
+    <input type="text" id="searchField" class="form-control" placeholder="e.g., hello"><br/>
+
+    <button id="searchBtn" class="btn btn-info center-block">Search</button>
+
+    <div class="table-responsive">
+        <table class="table table-striped" id="resultTable">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="elasticsearch.js"></script>
+<script type="text/javascript" src="elasticsearch.jquery.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
