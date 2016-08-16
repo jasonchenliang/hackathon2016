@@ -5,7 +5,22 @@ $(document).ready(function () {
 
   $("#searchBtn").click(function () {
     client.search({
-      q: $("#searchField").val()
+      index: 'twitter',
+      type: 'tweet',
+      body: {
+        "size": 100,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "match": {
+                  "entities.hashtags.text": $("#searchField").val()
+                }
+              }
+            ]
+          }
+        }
+      }
     }).then(function (body) {
       displayResult(body.hits.hits);
     }, function (error) {
@@ -21,11 +36,13 @@ function displayResult(hits) {
 
   if (hits.length !== 0) {
     var tr = $('<tr/>');
+    tr.append("<th>"+"#"+"</th>");
     generateRow(hits[0], tr, "th");
     resultTable.find("thead").append(tr);
 
     $.each(hits, function (index, value) {
       var tr = $('<tr/>');
+      tr.append("<td>"+(index+1)+"</td>");
       generateRow(value, tr, "td");
       resultTable.find("tbody").append(tr);
     });
