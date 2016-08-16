@@ -46,3 +46,8 @@ Load with the following command:
 ```shell
 curl 'localhost:9200/_cat/indices?v'
 ```
+
+Delete index:
+```shell
+curl -XDELETE 'http://localhost:9200/shakespeare/'
+```
